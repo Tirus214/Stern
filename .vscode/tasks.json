@@ -3,17 +3,16 @@
 	"tasks": [
 		{
 			"type": "cppbuild",
-			"label": "C/C++: gcc.exe build active file",
-			"command": "C:\\MinGW\\bin\\gcc.exe",
+			"label": "Compilar",
+			"command": "C:/mingw/bin/gcc.exe",
 			"args": [
-				"-fdiagnostics-color=always",
 				"-g",
 				"${file}",
 				"-o",
 				"${fileDirname}\\${fileBasenameNoExtension}.exe"
 			],
 			"options": {
-				"cwd": "${fileDirname}"
+				"cwd": "C:/mingw/bin"
 			},
 			"problemMatcher": [
 				"$gcc"
@@ -22,7 +21,14 @@
 				"kind": "build",
 				"isDefault": true
 			},
-			"detail": "compiler: C:\\MinGW\\bin\\gcc.exe"
+			"detail": "compiler: C:/mingw/bin/gcc.exe"
+		},
+		{
+			"label": "Ejecutar",
+			"command": "./${fileDirname}\\${fileBasenameNoExtension}.exe",
+			"dependsOn": "Compilar",
+			"problemMatcher": [],
+			"group": "build"
 		}
 	]
 }

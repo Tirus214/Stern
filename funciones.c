@@ -1,6 +1,17 @@
 #include <stdio.h>
 #include <ctype.h>
 
+
+int fracIr(int n1, int n2){
+    int i = 2;
+    while(n1 >= i && n2 >= i){
+        if(n1%i == 0 && n2%i == 0){
+            return 0;
+        }
+        return 1;
+    }
+}
+
 int sucesionStern(int n)
 {
     if (n < 2)
@@ -45,11 +56,16 @@ void imprimirIndice(int numerador, int denominador)
 int main()
 {
     /*
+    //prueba de la funcion para identificar funciones irregulares
+    int h = fracIr(1,3);
+    printf("%d", h);
+    */
+
+    /*
     int resultado;
     do{
-         resultado = menu_stern_brocot();
+        resultado = menu_stern_brocot();
     }while(resultado==0); */
-
     int i;
     do
     {
