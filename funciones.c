@@ -6,12 +6,13 @@ int fracIr(int n1, int n2){
     int i = 2;
     if(n1 == 0 || n2 == 0)
         return 0;
-    while(n1 >= i && n2 >= i){
+    while(n1/2 >= i && n2/2 >= i){
         if(n1%i == 0 && n2%i == 0){
             return 0;
         }
-        return 1;
+        i++;
     }
+    return 1;
 }
 
 int sucesionStern(int n)
@@ -59,7 +60,7 @@ int main()
 {
     /*
     //prueba de la funcion para identificar funciones irregulares
-    int h = fracIr(1,3);
+    int h = fracIr(180,179);
     printf("%d", h);
     */
 
