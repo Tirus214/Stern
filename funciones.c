@@ -1,26 +1,25 @@
 #include <stdio.h>
 #include <ctype.h>
-
-
+#include <string.h>
+#include <stdlib.h>
+#define DIGITOS 10
 int fracIr(int n1, int n2){
     int i = 2;
     if(n1 == 0 || n2 == 0)
         return 0;
     while(n1/2 >= i && n2/2 >= i){
         if(n1%i == 0 && n2%i == 0){
-            return 0;
+            return 0; //fraccion reducible
         }
         i++;
     }
-    return 1;
+    return 1;//fracción irreducible
 }
-
 int sucesionStern(int n)
 {
     if (n < 2)
     {
-
-                return n;
+        return n;
     }
     else if (n % 2 == 0) // si es par
     {
@@ -55,67 +54,69 @@ void imprimirIndice(int numerador, int denominador)
 {
     printf("Indice de fraccion: %i\n\n", encontrarIndice(numerador, denominador));
 }
+int isEnteroPositivo(char num[]){//ingresa una cadena, valida que sea entero y lo regresa
+    int numValido;
+    if(strlen(num)>DIGITOS){
+        printf("La longitud del entero sobrepasa el limite establecido");
+        return -1;
+    }
+    for(int i = 0; i<strlen(num);i++){
+        if(!(isdigit(num[i])))
+            return -2;
+    }
+    numValido = atoi(num);
+    return numValido;
+}
+int input(char mensaje[]){//Ingresa un parametro para mostrar el mensaje y si es un número entero positivo, lo regresa
+    char numero[DIGITOS];
+    printf(mensaje);
+    scanf("%s",numero);
+    int validateNum = isEnteroPositivo(numero);
+    if(validateNum>0)
+        return validateNum;
+    else
+        return -1;
+}
+int menu_stern_brocot(){
+    printf("\n\n------Stern Brocot------\n\n");
+
+    int opcion = input("\n1. Ver la fraccion a traves de un indice\n2. Ver el indice a traves de una opcion\n3. Salir\n");
+    if(opcion!=-1){
+        if (opcion == 1)
+        {
+            int indice = input("Digite un indice: ");
+            if (indice>0)
+                imprimirFraccion(indice);
+            else
+                printf("Digite un indice entero positivo");
+        }else if(opcion == 2)
+        {
+            int numerador = input("Ingrese el numerador: ");
+            int denominador = input("Ingrese el denominador: ");
+            if(numerador>0 && denominador>0)
+            {
+                if(fracIr(numerador, denominador)==1)
+                    imprimirIndice(numerador,denominador);
+                else
+                    printf("La fraccion ingresada no es irreducible");
+            }else
+                printf("Error, el numerador y denominador deben ser enteros positivos");
+        }else if (opcion==3){
+            printf("\nIntegrantes:\n-\n-\n-Esteban Leiva Montenegro 2020426227");
+            printf("\n\nGracias por usar nuestro programa");
+            return 1;
+        }else
+            printf("Por favor digite una de las opciones");
+    }else
+        printf("Error, digite un numero entero");
+    return 0; //El menú se ejecuta con éxito
+}
 
 int main()
 {
-    /*
-    //prueba de la funcion para identificar funciones irregulares
-    int h = fracIr(180,179);
-    printf("%d", h);
-    */
-
-    /*
     int resultado;
-    do{
+    do
         resultado = menu_stern_brocot();
-    }while(resultado==0); */
-    int i;
-    do
-    {
-        printf("Digite un indice: ");
-        scanf("%i", &i);
-        imprimirFraccion(i);
-    } while (i != 0);
-
-    int n;
-    int d;
-    do
-    {
-        printf("Digite un numerador: ");
-        scanf("%i", &n);
-        printf("Digite un denominador: ");
-        scanf("%i", &d);
-        imprimirIndice(n, d);
-    } while (n != 0 && d != 0);
-
+    while(resultado!=1);
     return 0;
 }
-/*
-int menu_stern_brocot(){
-
-    int opcion;
-    printf("------Stern Brocot------\n\n");
-    printf("1. Ver la fraccion a traves de un indice\n2. Ver el indice a traves de una opcion\n");
-    scanf("%opcion", &opcion );
-    if(isdigit(opcion)){
-        if (opcion == 1){
-             printf("Digite un indice: ");
-            scanf("%i", &i);
-            imprimirFraccion(i);
-        }else if(opcion == 2){
-            printf("Digite un numerador: ");
-            scanf("%i", &n);
-            printf("Digite un denominador: ");
-            scanf("%i", &d);
-            imprimirIndice(n, d);0
-        }else{
-
-            return -1;//falla por no ingresar una de las opciones
-        }
-        return 0; //El menú se ejecuta con éxito
-    }else{
-        printf("Error, digite un numero entero");
-        return -2; //Falla por no ingresar un número entero
-    }
-}
- */
