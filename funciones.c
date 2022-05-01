@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <ctype.h>
 
 int sucesionStern(int n)
 {
@@ -41,11 +42,14 @@ void imprimirIndice(int numerador, int denominador)
     printf("Indice de fraccion: %i\n\n", encontrarIndice(numerador, denominador));
 }
 
-//
-//
-//
 int main()
 {
+    /*
+    int resultado;
+    do{
+         resultado = menu_stern_brocot();
+    }while(resultado==0); */
+
     int i;
     do
     {
@@ -67,3 +71,32 @@ int main()
 
     return 0;
 }
+/*
+int menu_stern_brocot(){
+
+    int opcion;
+    printf("------Stern Brocot------\n\n");
+    printf("1. Ver la fraccion a traves de un indice\n2. Ver el indice a traves de una opcion\n");
+    scanf("%opcion", &opcion );
+    if(isdigit(opcion)){
+        if (opcion == 1){
+             printf("Digite un indice: ");
+            scanf("%i", &i);
+            imprimirFraccion(i);
+        }else if(opcion == 2){
+            printf("Digite un numerador: ");
+            scanf("%i", &n);
+            printf("Digite un denominador: ");
+            scanf("%i", &d);
+            imprimirIndice(n, d);0
+        }else{
+
+            return -1;//falla por no ingresar una de las opciones
+        }
+        return 0; //El menú se ejecuta con éxito
+    }else{
+        printf("Error, digite un numero entero");
+        return -2; //Falla por no ingresar un número entero
+    }
+}
+ */
