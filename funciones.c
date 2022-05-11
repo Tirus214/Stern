@@ -81,16 +81,18 @@ int menu_stern_brocot(){
     printf("\n\n------Stern Brocot------\n\n");
 
     int opcion = input("\n1. Ver la fraccion a traves de un indice\n2. Ver el indice a traves de una opcion\n3. Salir\n");
-    if(opcion!=-1){
-        if (opcion == 1)
-        {
+    switch(opcion){
+        case -1:
+            printf("Error, digite un numero entero");
+            break;
+        case 1:
             int indice = input("Digite un indice: ");
             if (indice>0)
                 imprimirFraccion(indice);
             else
                 printf("Digite un indice entero positivo");
-        }else if(opcion == 2)
-        {
+            break;
+        case 2:
             int numerador = input("Ingrese el numerador: ");
             int denominador = input("Ingrese el denominador: ");
             if(numerador>0 && denominador>0)
@@ -101,14 +103,14 @@ int menu_stern_brocot(){
                     printf("La fraccion ingresada no es irreducible");
             }else
                 printf("Error, el numerador y denominador deben ser enteros positivos");
-        }else if (opcion==3){
+            break;
+        case 3:
             printf("\nIntegrantes:\n-\n-\n-Esteban Leiva Montenegro 2020426227");
             printf("\n\nGracias por usar nuestro programa");
             return 1;
-        }else
+        default:
             printf("Por favor digite una de las opciones");
-    }else
-        printf("Error, digite un numero entero");
+    }
     return 0; //El menú se ejecuta con éxito
 }
 
