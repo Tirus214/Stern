@@ -122,7 +122,7 @@ int menu_stern_brocot()
             printf("Error, el numerador y denominador deben ser enteros positivos\n");
         break;
     case 3:
-        printf("\nIntegrantes:\n-Jean Paul Rodriguez Flores 2020059156\n-\n-Esteban Leiva Montenegro 2020426227");
+        printf("\nIntegrantes:\n-Jean Paul Rodriguez Flores 2020059156\n-\n-Esteban Leiva Montenegro 2020426227\n-\n José Mauricio Muñoz Morera");
         printf("\n\nGracias por usar nuestro programa\n\n");
         return 1;
     default:
