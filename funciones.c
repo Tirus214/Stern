@@ -6,10 +6,17 @@
 
 int fracIr(int n1, int n2)
 {
-    int i = 2;
-    if (n1 == 0 || n2 == 0 || n1%n2==0 || n2%n1==0 && n2 != 1)
-        return 0;
+    if (n1 == 1 || n2 == 1)
+    {
+        return 1;
+    }
 
+    else if (n1 % n2 == 0 || n2 % n1 == 0)
+    {
+        return 0;
+    }
+
+    int i = 2;
     while (n1 / 2 >= i && n2 / 2 >= i)
     {
         if (n1 % i == 0 && n2 % i == 0)
@@ -133,7 +140,6 @@ int menu_stern_brocot()
 
 int main()
 {
-    printf("%i%", 3/2);
     int resultado;
     do
         resultado = menu_stern_brocot();
